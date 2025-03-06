@@ -62,12 +62,15 @@ For a more modern approach, let's use Next.js with its API routes:
 
 Step 1: Create a New Next.js Project
 
+```bash
 npx create-next-app@latest auth-app
 cd auth-app
 npm install pg bcrypt
+```
 
 Step 2: Create Database Connection (lib/db.js)
 
+```bash
 import { Pool } from 'pg';
 
 const pool = new Pool({
@@ -79,9 +82,11 @@ port: parseInt(process.env.DB_PORT || '5432'),
 });
 
 export default pool;
+```
 
 Step 3: Create API Routes
 
+```bash
 Create file: pages/api/register.js:
 import pool from '../../lib/db';
 import bcrypt from 'bcrypt';
@@ -156,8 +161,11 @@ console.error('Login error:', error);
 res.status(500).json({ error: 'Server error during login' });
 }
 }
+```
 
 Step 4 (Complete): Create React Components for Forms
+
+```bash
 Create a component-based approach in pages/index.js:
 
 import { useState } from 'react';
@@ -444,18 +452,24 @@ return (
 );
 }
 
+```
+
 Step 5: Add Environment Variables (.env.local)
 Create a .env.local file in the root of your Next.js project:
+
+```bash
 
 DB_USER=your_db_user
 DB_HOST=localhost
 DB_NAME=your_db_name
 DB_PASSWORD=your_db_password
 DB_PORT=5432
+```
 
 Step 6: Add Form Validation
 For better user experience, you can add form validation. Create a utility function in utils/validate.js:
 
+```bash
 export const validateRegistration = (formData) => {
 const errors = {};
 
@@ -484,9 +498,11 @@ isValid: Object.keys(errors).length === 0,
 errors
 };
 };
+```
 
 Then import and use this in your form submission handler:
 
+```bash
 import { validateRegistration } from '../utils/validate';
 
 // Inside your component
@@ -535,6 +551,7 @@ phone?: string;
 birthDate?: string;
 createdAt: string;
 }
+```
 
 Benefits of This Approach
 Programmatic Field Generation: As you can see in the code, we define fields as an array of objects, making it easy to add, remove, or modify fields.
