@@ -86,8 +86,9 @@ export default pool;
 
 Step 3: Create API Routes
 
-```bash
 Create file: pages/api/register.js:
+
+```bash
 import pool from '../../lib/db';
 import bcrypt from 'bcrypt';
 
@@ -165,9 +166,9 @@ res.status(500).json({ error: 'Server error during login' });
 
 Step 4 (Complete): Create React Components for Forms
 
-```bash
 Create a component-based approach in pages/index.js:
 
+```bash
 import { useState } from 'react';
 import Head from 'next/head';
 
